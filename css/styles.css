@@ -72,7 +72,7 @@ p {
 .header {
 	border-bottom: 1px solid var(--header-border-color);
 }
-.header .container {
+.header__container {
 	display: flex;
 	align-items: center;
 }
@@ -86,16 +86,17 @@ p {
 	text-decoration: none;
 	color: var(--logo-black);
 }
-.logo > .accent {
+.logo__accent {
 	color: var(--accent-color);
 }
-.header .logo {
+.header__logo {
 	padding: 24px 0;
+	margin-right: 93px;
 }
 
 /* Стилі навігації в хедері */
+.navigation,
 .site-nav,
-.site-nav .list,
 .contact-nav {
 	display: flex;
 }
@@ -105,52 +106,50 @@ p {
 .contact-nav {
 	margin-left: auto;
 }
-.site-nav .item + .item,
-.contact-nav .item + .item {
+.site-nav__item:not(:first-child),
+.contact-nav__item:not(:first-child) {
 	margin-left: 50px;
 }
-.logo + .list {
-	margin-left: 93px;
-}
-.site-nav .link,
-.contact-nav .link {
+
+.site-nav__link,
+.contact-nav__link {
 	padding: 32px 0;
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 1.14;
 	letter-spacing: 0.02em;
 }
-.site-nav .link {
+.site-nav__link {
 	color: var(--title-text-color);
 }
-.contact-nav .link {
+.contact-nav__link {
 	display: flex;
 	align-items: center;
 	color: var(--primary-text-color);
 }
-.contact-nav-icon {
+.contact-nav__icon {
 	margin-right: 10px;
 	fill: currentColor;
 }
 /* Колір при наведенні та фокуксі та колір поточної сторінки */
-.site-nav .link,
-.contact-nav .link {
+.site-nav__link,
+.contact-nav__link {
 	transition: color var(--transition-time) var(--transition-timing-function);
 }
 
-.site-nav .link:hover,
-.site-nav .link:focus,
-.contact-nav .link:hover,
-.contact-nav .link:focus {
+.site-nav__link:hover,
+.site-nav__link:focus,
+.contact-nav__link:hover,
+.contact-nav__link:focus {
 	color: var(--accent-color);
 }
 
-.link.current {
+.site-nav__link--current {
 	position: relative;
 	color: var(--accent-color);
 }
 
-.current::after {
+.site-nav__link--current::after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -501,15 +500,15 @@ p {
 	background-color: var(--dark-background);
 	padding: 60px 0;
 }
-.footer .logo {
+.footer__logo {
 	display: inline-block;
 	margin-bottom: 20px;
 	color: var(--primary-white);
 }
-.footer .item + .item {
+.address__item:not(:first-child) {
 	margin-top: 9px;
 }
-.address .link {
+.address__link {
 	font-size: 14px;
 	line-height: 1.71;
 	letter-spacing: 0.03em;
@@ -517,18 +516,18 @@ p {
 	color: var(--contact-footer);
 	transition: color var(--transition-time) var(--transition-timing-function);
 }
-.address .fact-address {
+.address__link--fact-address {
 	color: var(--primary-white);
 }
-.address .link:hover,
-.address .link:focus {
+.address__link:hover,
+.address__link:focus {
 	color: var(--accent-color);
 }
-.footer-content {
+.footer__container {
 	display: flex;
 	align-items: baseline;
 }
-.footer-content .footer-part:not(:first-child) {
+.footer__section:not(:first-child) {
 	margin-left: 70px;
 }
 .footer-messengers-text,
@@ -598,6 +597,15 @@ p {
 		visibility var(--transition-time-modal) var(--transition-timing-function),
 		opacity var(--transition-time-modal) var(--transition-timing-function);
 }
+.modal__title {
+	margin-bottom: 12px;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1.15;
+	text-align: center;
+	letter-spacing: 0.03em;
+	color: var(--title-text-color);
+}
 .is-hidden {
 	visibility: hidden;
 	opacity: 0;
@@ -631,19 +639,9 @@ p {
 	border: 1px solid var(--accent-color);
 	background-color: rgb(0 0 0 / 0.1);
 }
-
 .modal-form {
 	display: flex;
 	flex-direction: column;
-}
-.modal-form-title {
-	margin-bottom: 12px;
-	font-weight: 700;
-	font-size: 20px;
-	line-height: 1.15;
-	text-align: center;
-	letter-spacing: 0.03em;
-	color: var(--title-text-color);
 }
 .input-field {
 	position: relative;
@@ -651,48 +649,47 @@ p {
 	flex-direction: column;
 	margin-bottom: 10px;
 }
-.input-field .label,
-.input-field input,
-.input-field textarea {
+.input-field__label,
+.input-field__input,
+.input-field__textarea {
 	font-size: 12px;
 	line-height: 1.17;
 	letter-spacing: 0.01em;
 }
-.input-field .label {
+.input-field__label {
 	margin-bottom: 4px;
 }
-.input-field input {
+.input-field__input {
 	height: 40px;
 	padding: 12px 12px 12px 42px;
 }
-
-.input-field textarea {
+.input-field__textarea {
 	resize: none;
 	height: 120px;
 	padding: 12px 16px;
 }
-.input-field input,
-.input-field textarea {
+.input-field__input,
+.input-field__textarea {
 	border: 1px solid rgb(33 33 33 / 0.2);
 	border-radius: 4px;
 	transition: border var(--transition-time) var(--transition-timing-function);
 }
-.input-field textarea::placeholder {
+.input-field__textarea::placeholder {
 	color: rgb(117 117 117 / 0.5);
 }
-.modal-form-icon {
+.input-field__icon {
 	position: absolute;
 	left: 12px;
 	bottom: 11px;
 	fill: var(--title-text-color);
 	transition: fill var(--transition-time) var(--transition-timing-function);
 }
-.input-field input:focus,
-.input-field textarea:focus {
+.input-field__input:focus,
+.input-field__textarea:focus {
 	border-color: var(--accent-color);
 	outline: none;
 }
-.input-field input:focus + .modal-form-icon {
+.input-field__input:focus + .input-field__icon {
 	fill: var(--accent-color);
 }
 .checkbox {
@@ -702,17 +699,17 @@ p {
 	margin-top: 10px;
 	margin-bottom: 30px;
 }
-.checkbox-label {
+.checkbox__label {
 	font-size: 14px;
 	line-height: 1.71;
 	letter-spacing: 0.03em;
 	color: var(--primary-text-color);
 }
-.checkbox-label a {
+.checkbox__link {
 	text-decoration-line: underline;
 	color: var(--accent-color);
 }
-.checkbox-icon {
+.checkbox__icon {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -723,8 +720,7 @@ p {
 	border-radius: 2px;
 	transition: background-color var(--transition-time) var(--transition-timing-function);
 }
-
-.checkbox-input:checked + .checkbox-icon {
+.checkbox__input:checked + .checkbox__icon {
 	border-color: transparent;
 	background-color: var(--accent-color);
 }
